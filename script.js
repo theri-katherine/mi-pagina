@@ -226,7 +226,6 @@
   /**
    * PORTFOLIO: Carga manual y segura de fotos por categoría
    */
-  const CARPETA_BASE = 'IMG/PORTFOLIO';
 
   const CATEGORIAS = {
     autorretrato: 'AUTORRETRATO',
@@ -482,7 +481,7 @@
       fotos.forEach(nombre => {
         const carpetaNombre = CATEGORIAS[clave];
         // Codifica correctamente la ruta para evitar errores con espacios en los nombres
-        const src = `${CARPETA_BASE}/${carpetaNombre}/${encodeURIComponent(nombre)}`;
+        const src = `${carpetaNombre}/${encodeURIComponent(nombre)}`;
         const titulo = nombre.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ');
         
         htmlContenido += `
@@ -580,7 +579,7 @@
   "Técnicas efectivas de composición y encuadre en terreno.",
   "Ejercicios prácticos para dominar la luz natural."
 ],
-      imagen: "IMG/PORTFOLIO/RETRATO/RETRATO 13.jpg"
+      imagen: "RETRATO/RETRATO 13.jpg"
     },
     2: {
       nombre: "Pre producción",
@@ -593,7 +592,7 @@
   "Selección adecuada de locaciones y dirección de arte.",
   "Planificación logística y organización de equipos de trabajo."
 ],
-      imagen: "IMG/PORTFOLIO/INFANTIL/DANTE.jpg"
+      imagen: "INFANTIL/DANTE.jpg"
     },
     3: {
       nombre: "Post producción",
@@ -606,7 +605,7 @@
   "Corrección de color y estilización de la atmósfera visual.",
   "Optimización de archivos para impresión y formatos web."
 ],
-      imagen: "IMG/PORTFOLIO/NATURALEZA/HOJAS VERDES 1.png"
+      imagen: "NATURALEZA/HOJAS VERDES 1.png"
     },
     4: {
       nombre: "Análisis de imágenes",
@@ -619,7 +618,7 @@
   "Sugerencias constructivas para mejorar encuadres y luces.",
   "Optimización y curadoría de galerías fotográficas."
 ],
-      imagen: "./IMG/PORTFOLIO/NATURALEZA/PAISAJE1.jpg"
+      imagen: "NATURALEZA/PAISAJE1.jpg"
     },
     5: {
       nombre: "Taller de fotografía",
@@ -632,7 +631,7 @@
   "Asesoría personalizada para potenciar tu propio estilo.",
   "Resolución de dudas en tiempo real durante las sesiones."
 ],
-      imagen: "IMG/PORTFOLIO/RETRATO/RETRATO 3.jpg"
+      imagen: "RETRATO/RETRATO 3.jpg"
     },
     6: {
       nombre: "Foto montaje digital",
@@ -645,7 +644,7 @@
   "Armonización de texturas y tonos en cada composición.",
   "Acabados limpios y profesionales que mantienen la naturalidad."
 ],
-      imagen: "IMG/PORTFOLIO/NEWBORN/BEBE 10.jpg"
+      imagen: "NEWBORN/BEBE 10.jpg"
     }
   };
 
