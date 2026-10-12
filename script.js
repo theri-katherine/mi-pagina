@@ -1,12 +1,3 @@
-/**
-* Template Name: Personal
-* Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
-* Updated: Mar 05 2025 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
-
 (function() {
   "use strict";
 
@@ -79,26 +70,37 @@
    */
   let scrollTop = document.querySelector('.scroll-top');
 
+  // Posición donde se detiene el scroll hacia abajo: justo arriba del footer
+  function posicionParadaFooter() {
+    const total = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+    const footer = document.querySelector('#footer');
+    if (!footer) return total - window.innerHeight;
+    const scrollActual = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+    const footerTop = footer.getBoundingClientRect().top + scrollActual;
+    return Math.max(0, footerTop - window.innerHeight);
+  }
+
   function toggleScrollTop() {
     if (scrollTop) {
       const scrollTotal = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight) - window.innerHeight;
       const scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
       const scrollIcon = scrollTop.querySelector('i');
+      const paradaFooter = posicionParadaFooter();
 
       // Si la página se puede desplazar
       if (scrollTotal > 10) {
         scrollTop.classList.add('active');
 
-        // Si estamos en la mitad superior de la página, la flecha apunta hacia abajo para ir al final
-        if (scrollPos < scrollTotal / 2) {
+        // Si aún no llegamos a la parada arriba del footer, la flecha apunta hacia abajo
+        if (scrollPos < paradaFooter - 10) {
           if (scrollIcon) {
             scrollIcon.classList.remove('bi-arrow-up-short');
             scrollIcon.classList.add('bi-arrow-down-short');
           }
-          scrollTop.setAttribute('title', 'Bajar al final');
-          scrollTop.setAttribute('aria-label', 'Bajar al final');
+          scrollTop.setAttribute('title', 'Bajar al footer');
+          scrollTop.setAttribute('aria-label', 'Bajar al footer');
         } else {
-          // Si estamos en la mitad inferior de la página, la flecha apunta hacia arriba para ir al inicio
+          // Si ya llegamos arriba del footer, la flecha apunta hacia arriba para ir al inicio
           if (scrollIcon) {
             scrollIcon.classList.remove('bi-arrow-down-short');
             scrollIcon.classList.add('bi-arrow-up-short');
@@ -118,10 +120,12 @@
       const scrollTotal = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight) - window.innerHeight;
       const scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
 
-      // Si está en la mitad superior baja al final, de lo contrario sube al inicio
-      if (scrollPos < scrollTotal / 2) {
+      const paradaFooter = posicionParadaFooter();
+
+      // Si aún no llegó a la parada arriba del footer baja hasta ahí, de lo contrario sube al inicio
+      if (scrollPos < paradaFooter - 10) {
         window.scrollTo({
-          top: Math.max(document.documentElement.scrollHeight, document.body.scrollHeight),
+          top: paradaFooter,
           behavior: 'smooth'
         });
         const scrollIcon = scrollTop.querySelector('i');
@@ -186,22 +190,52 @@
   if (typeof PureCounter !== 'undefined') new PureCounter();
 
   /**
-   * Animate the skills items on reveal
+   * Preguntas frecuentes (acordeón): una respuesta abierta a la vez
    */
-  let skillsAnimation = document.querySelectorAll('.skills-animation');
-  skillsAnimation.forEach((item) => {
-    if (typeof Waypoint === 'undefined') return;
-    new Waypoint({
-      element: item,
-      offset: '80%',
-      handler: function(direction) {
-        let progress = item.querySelectorAll('.progress .progress-bar');
-        progress.forEach(el => {
-          el.style.width = el.getAttribute('aria-valuenow') + '%';
-        });
-      }
+  function initFaq() {
+    const items = document.querySelectorAll('.faq .faq-item');
+    if (!items.length) return;
+
+    function cerrar(item) {
+      item.classList.remove('active');
+      const btn = item.querySelector('.faq-question');
+      const resp = item.querySelector('.faq-answer');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+      if (resp) resp.style.maxHeight = null;
+    }
+
+    function abrir(item) {
+      item.classList.add('active');
+      const btn = item.querySelector('.faq-question');
+      const resp = item.querySelector('.faq-answer');
+      if (btn) btn.setAttribute('aria-expanded', 'true');
+      if (resp) resp.style.maxHeight = resp.scrollHeight + 'px';
+    }
+
+    items.forEach(function(item) {
+      const btn = item.querySelector('.faq-question');
+      if (!btn) return;
+      btn.addEventListener('click', function() {
+        const estabaAbierto = item.classList.contains('active');
+        items.forEach(cerrar);
+        if (!estabaAbierto) abrir(item);
+      });
     });
-  });
+
+    window.addEventListener('resize', function() {
+      items.forEach(function(item) {
+        if (item.classList.contains('active')) {
+          const resp = item.querySelector('.faq-answer');
+          resp.style.maxHeight = resp.scrollHeight + 'px';
+        }
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFaq);
+  } else {
+    initFaq();
+  }
 
   
   /**

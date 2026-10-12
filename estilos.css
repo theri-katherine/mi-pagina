@@ -1,10 +1,3 @@
-/**
-* Template Name: Personal
-* Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
-* Updated: Mar 05 2025 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
 /*--------------------------------------------------------------
 # Font & Color Variables
@@ -12,9 +5,9 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Raleway",  sans-serif;
-  --nav-font: "Poppins",  sans-serif;
+  --default-font: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  --heading-font: "Montserrat", sans-serif;
+  --nav-font: "Montserrat", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
@@ -95,7 +88,6 @@ a:hover {
 .swiper-button-prev:hover {
   color: var(--slider-arrow-hover-color);
 }
-
 
 h1,
 h2,
@@ -891,43 +883,6 @@ section,
 }
 
 /*--------------------------------------------------------------
-# Skills Section
---------------------------------------------------------------*/
-.skills .progress {
-  height: 60px;
-  display: block;
-  background: none;
-  border-radius: 0;
-}
-
-.skills .progress .skill {
-  color: var(--default-color);
-  padding: 0;
-  margin: 0 0 6px 0;
-  text-transform: uppercase;
-  display: block;
-  font-weight: 600;
-  font-family: var(--heading-font);
-}
-
-.skills .progress .skill .val {
-  float: right;
-  font-style: normal;
-}
-
-.skills .progress-bar-wrap {
-  background: color-mix(in srgb, var(--default-color), transparent 90%);
-  height: 10px;
-}
-
-.skills .progress-bar {
-  width: 1px;
-  height: 10px;
-  transition: 0.9s;
-  background-color: var(--accent-color);
-}
-
-/*--------------------------------------------------------------
 # Interests Section
 --------------------------------------------------------------*/
 .interests .features-item {
@@ -1419,7 +1374,7 @@ section,
 .contact .php-email-form textarea {
   color: var(--default-color);
   background-color: color-mix(in srgb, var(--background-color), transparent 50%);
-  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
+  border-color: color-mix(in srgb, var(--default-color), transparent 30%);
   font-size: 14px;
   padding: 10px 15px;
   box-shadow: none;
@@ -1435,12 +1390,12 @@ section,
 .contact .php-email-form input[type=text]::placeholder,
 .contact .php-email-form input[type=email]::placeholder,
 .contact .php-email-form textarea::placeholder {
-  color: color-mix(in srgb, var(--default-color), transparent 70%);
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
 }
 
 .contact .php-email-form button[type=submit] {
   color: var(--contrast-color);
-  background: var(--accent-color);
+  background: var(--default-color);
   border: 0;
   padding: 10px 30px;
   transition: 0.4s;
@@ -1448,5 +1403,205 @@ section,
 }
 
 .contact .php-email-form button[type=submit]:hover {
-  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+  background: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Tipografía global (estilo del título "Preguntas frecuentes")
+# Montserrat liviana, mayúsculas y espaciado amplio
+--------------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6,
+.page-title .heading h1,
+.about .content h2,
+.section-title div,
+.footer h3,
+.services .service-item h3,
+.service-details h3,
+.service-details h4,
+.portfolio-details .portfolio-description h2,
+.portfolio-details .portfolio-info h3,
+.resume .resume-title,
+.resume .resume-item h4,
+.contact .info-item h3 {
+  font-family: var(--heading-font);
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.page-title .heading p {
+  letter-spacing: 1px;
+}
+
+.navmenu a,
+.navmenu a:focus {
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+/*--------------------------------------------------------------
+# FAQ Section (Preguntas frecuentes)
+--------------------------------------------------------------*/
+.faq .section-title {
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+/* Mismo estilo que el título "Sobre mí" (.page-title .heading h1) */
+.faq .section-title h2.faq-title {
+  font-family: var(--heading-font);
+  font-size: 38px;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  color: var(--heading-color);
+}
+
+.faq .section-title h2.faq-title::after {
+  display: none;
+}
+
+.faq .faq-list {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faq .faq-item {
+  background-color: var(--default-color);
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.faq .faq-question {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 44px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-align: center;
+  color: var(--contrast-color);
+  font-family: var(--default-font);
+  font-size: 15px;
+}
+
+.faq .faq-num {
+  font-weight: 700;
+}
+
+.faq .faq-text {
+  font-weight: 400;
+}
+
+.faq .faq-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1;
+  transition: transform 0.3s;
+}
+
+.faq .faq-item.active .faq-icon {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.faq .faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  color: var(--contrast-color);
+}
+
+.faq .faq-answer p {
+  margin: 0;
+  padding: 0 44px 18px 44px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.faq .faq-question:hover .faq-text,
+.faq .faq-question:focus-visible .faq-text {
+  color: #b36b00;
+}
+
+@media (max-width: 575px) {
+  .faq .faq-question {
+    padding: 14px 36px 14px 16px;
+    font-size: 14px;
+  }
+
+  .faq .faq-answer p {
+    padding: 0 20px 16px 20px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Carrusel del inicio (responsivo)
+--------------------------------------------------------------*/
+#miCarrusel {
+  width: 100%;
+  max-width: 900px;
+}
+
+#miCarrusel .carousel-inner {
+  --bs-gutter-x: 0;
+  --bs-gutter-y: 0;
+}
+
+/* Una foto por diapositiva, ocupando todo el ancho del carrusel */
+#miCarrusel .carousel-item {
+  flex: 0 0 100%;
+  width: 100%;
+  padding: 0;
+}
+
+/* Altura fluida: se adapta al ancho de pantalla sin recortar la foto */
+#miCarrusel .carousel-item img {
+  display: block;
+  width: 100%;
+  height: clamp(300px, 90vw, 560px);
+  object-fit: contain;
+}
+
+/*--------------------------------------------------------------
+# Portada (hero) - adaptación a tablet y móvil
+--------------------------------------------------------------*/
+@media (max-width: 1199px) {
+  .hero {
+    min-height: max(65vh, 440px);
+    padding: 150px 0 70px 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.6rem, 4.4vw, 2.4rem);
+  }
+
+  .hero .subtitle {
+    font-size: clamp(0.95rem, 2.4vw, 1.4rem);
+  }
+}
+
+@media (max-width: 575px) {
+  .hero {
+    min-height: max(45vh, 360px);
+    padding: 130px 0 40px 0;
+  }
+
+  /* En celular la imagen se muestra completa y se achica según el ancho,
+     en vez de recortarse. Para volver a rellenar toda la portada
+     (recortando los bordes) cambia "contain" por "cover". */
+  .hero img {
+    object-fit: contain;
+    background-color: var(--background-color);
+  }
 }
