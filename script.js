@@ -835,7 +835,7 @@
       if (sent) sent.style.display = 'none';
 
       try {
-        const res = await fetch(form.action, {
+        const res = await fetch('https://formsubmit.co/ajax/theri.katherine@gmail.com', {
           method: 'POST',
           headers: { 'Accept': 'application/json' },
           body: new FormData(form)
