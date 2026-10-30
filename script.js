@@ -815,4 +815,49 @@
     }
   })();
 
+  /**
+   * Formulario de contacto (Web3Forms, envío sin recargar la página)
+   * Solo actúa en contact.html; usa los mensajes .loading, .error-message y .sent-message
+   */
+  (function () {
+    const form = document.querySelector('.php-email-form');
+    if (!form) return;
+
+    const loading = form.querySelector('.loading');
+    const error = form.querySelector('.error-message');
+    const sent = form.querySelector('.sent-message');
+    const textoError = error ? error.textContent : '';
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      if (loading) loading.style.display = 'block';
+      if (error) error.style.display = 'none';
+      if (sent) sent.style.display = 'none';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          if (sent) sent.style.display = 'block';
+          form.reset();
+        } else {
+          throw new Error(data.message || 'Error al enviar');
+        }
+      } catch (err) {
+        if (error) {
+          error.textContent = textoError + ' (' + (err && err.message ? err.message : err) + ')';
+          error.style.display = 'block';
+        }
+        console.error(err);
+      } finally {
+        if (loading) loading.style.display = 'none';
+      }
+    });
+  })();
+
 })();

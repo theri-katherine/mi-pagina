@@ -87,11 +87,15 @@
     <!-- Contact Section -->
     <section id="contact" class="contact section">
 
-        <form action="https://api.web3forms.com/submit" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="600">
-          <input type="hidden" name="access_key" value="TU_ACCESS_KEY_AQUI">
-          <input type="hidden" name="subject" value="Nuevo mensaje desde tu web">
-          <input type="hidden" name="redirect" value="https://TU-DOMINIO.com/contact.html">
+      <form action="https://api.web3forms.com/submit" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="600">
+
+          <!-- Clave de Web3Forms (la que llega por correo). Reemplaza el texto entre comillas -->
+          <input type="hidden" name="access_key" value="PEGA_AQUI_TU_ACCESS_KEY">
+          <!-- Anti-spam (no tocar) -->
+          <input type="checkbox" name="botcheck" class="d-none" style="display:none" tabindex="-1" autocomplete="off">
+
           <div class="row gy-4">
+
             <div class="col-md-6">
               <input type="text" name="name" class="form-control" placeholder="Nombre" required="">
             </div>
