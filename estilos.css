@@ -131,7 +131,7 @@ h1{
 
 .php-email-form .sent-message {
   display: none;
-  color: #ffffff;
+  color: var(--link-color);
   background: #FFA500;
   text-align: center;
   padding: 15px;
